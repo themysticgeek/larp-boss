@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 //    return $request->user();
 //});
 
-Route::get('user', 'UserController@getAllStudents');
+Route::get('user', 'App\Http\Controllers\UserController@getAllStudents');
