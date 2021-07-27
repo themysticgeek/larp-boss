@@ -18,16 +18,4 @@ class UserController extends Controller
     {
         return view('users.index', ['users' => $model->paginate(15)]);
     }
-    
-    /**
-     * Export Users as JSON for API
-     *
-     * @param  none
-     * @return JSON $users
-     */
-    public function apiIndex()
-    {
-        $users = User::get()->toJson(JSON_PRETTY_PRINT);
-        return response($users, 200);
-    }
 }
