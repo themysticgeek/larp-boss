@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,8 +19,7 @@ Use App\Http\Controllers\API\RegisterController;
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [RegisterController::class, 'login']);
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
-
-Route::get('user', 'App\Http\Controllers\API\UserController@index');
+// Routes requiring authentication to access
+Route::middleware('auth:api')->group( function(){
+    Route::resource('users', UserController::class);
+});
